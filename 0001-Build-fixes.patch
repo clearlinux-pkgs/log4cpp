@@ -1,0 +1,26 @@
+From a4fe52b398f633ea59ae67a447b47732c24d891c Mon Sep 17 00:00:00 2001
+From: "Brett T. Warden" <brett.t.warden@intel.com>
+Date: Fri, 3 May 2019 10:12:05 -0700
+Subject: [PATCH] Build fixes
+
+---
+ doc/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index e98a555..647d5c4 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -1,7 +1,7 @@
+ SUBDIRS = html
+ 
+-man3dir = $(mandir)/man3
+-docdir  = $(prefix)/doc/@PACKAGE_TARNAME@-@PACKAGE_VERSION@
++man3dir = $(DESTDIR)/$(mandir)/man3
++docdir  = $(DESTDIR)/$(prefix)/share/doc/@PACKAGE_TARNAME@
+ 
+ EXTRA_DIST = \
+ 	mainPage.txt
+-- 
+2.21.0
+
