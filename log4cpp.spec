@@ -5,8 +5,8 @@
 Name     : log4cpp
 Version  : 1.1.3
 Release  : 1
-URL      : https://downloads.sourceforge.net/project/log4cpp/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-1.1.3.tar.gz
-Source0  : https://downloads.sourceforge.net/project/log4cpp/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-1.1.3.tar.gz
+URL      : https://sourceforge.net/projects/log4cpp/files/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-1.1.3.tar.gz
+Source0  : https://sourceforge.net/projects/log4cpp/files/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-1.1.3.tar.gz
 Summary  : C++ library for flexible logging, modeled after Log4j
 Group    : Development/Tools
 License  : LGPL-2.1
