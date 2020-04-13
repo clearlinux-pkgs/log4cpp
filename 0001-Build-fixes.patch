@@ -1,14 +1,17 @@
-From a4fe52b398f633ea59ae67a447b47732c24d891c Mon Sep 17 00:00:00 2001
+From f14c96f8d1cd21ac162366e1b5a8d43dc01ce2bf Mon Sep 17 00:00:00 2001
 From: "Brett T. Warden" <brett.t.warden@intel.com>
 Date: Fri, 3 May 2019 10:12:05 -0700
 Subject: [PATCH] Build fixes
 
+stime() no longer exists. Since we won't run this test as root anyway,
+allow it to always fail.
 ---
- doc/Makefile.am | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ doc/Makefile.am                        | 4 ++--
+ tests/testDailyRollingFileAppender.cpp | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/doc/Makefile.am b/doc/Makefile.am
-index e98a555..647d5c4 100644
+index e98a555..605e84f 100644
 --- a/doc/Makefile.am
 +++ b/doc/Makefile.am
 @@ -1,7 +1,7 @@
@@ -21,6 +24,19 @@ index e98a555..647d5c4 100644
  
  EXTRA_DIST = \
  	mainPage.txt
+diff --git a/tests/testDailyRollingFileAppender.cpp b/tests/testDailyRollingFileAppender.cpp
+index 9958f41..d12cba5 100644
+--- a/tests/testDailyRollingFileAppender.cpp
++++ b/tests/testDailyRollingFileAppender.cpp
+@@ -232,7 +232,7 @@ namespace OnlyManualTesting {
+ 
+ 		now += seconds;
+ 
+-		if (stime(&now) == -1) {
++		if (true) {
+ 			std::cerr << "Can not set date. Need admin privileges?" << std::endl;
+ 			return -1;
+ 		}
 -- 
-2.21.0
+2.26.0
 

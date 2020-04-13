@@ -4,7 +4,7 @@
 #
 Name     : log4cpp
 Version  : 1.1.3
-Release  : 1
+Release  : 2
 URL      : https://sourceforge.net/projects/log4cpp/files/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-1.1.3.tar.gz
 Source0  : https://sourceforge.net/projects/log4cpp/files/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-1.1.3.tar.gz
 Summary  : C++ library for flexible logging, modeled after Log4j
@@ -69,30 +69,35 @@ license components for the log4cpp package.
 
 %prep
 %setup -q -n log4cpp
+cd %{_builddir}/log4cpp
 %patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1556911825
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1586791454
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %autogen --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1556911825
+export SOURCE_DATE_EPOCH=1586791454
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/log4cpp
-cp COPYING %{buildroot}/usr/share/package-licenses/log4cpp/COPYING
+cp %{_builddir}/log4cpp/COPYING %{buildroot}/usr/share/package-licenses/log4cpp/e60c2e780886f95df9c9ee36992b8edabec00bcc
 %make_install
 
 %files
@@ -243,4 +248,4 @@ cp COPYING %{buildroot}/usr/share/package-licenses/log4cpp/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/log4cpp/COPYING
+/usr/share/package-licenses/log4cpp/e60c2e780886f95df9c9ee36992b8edabec00bcc
